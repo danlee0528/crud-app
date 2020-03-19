@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#usertablecontent tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1><%= title %></h1>
+        <br />
+        <h4>Search:</h4>
+        <p>Type something in the input field to search the table for names, age, emails or anything!</p>
+        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+        <br />
+        <a href="/adduser" class="btn btn-sm btn-primary">Add User</a>
+        <br />
+        <br />
+        <div class="table-responsive">
+            <table id="usertable" class="table table-dark table-stripped table-hover">
+                <tr>
+                    <th>Name</th>
+                    <th>E-mail</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Occupation</th>
+                    <th>City</th>
+                    <th>Salary</th>
+                    <th>Marital Status</th>
+                    <th>Action</th>
+                </tr>
+                <tbody id="usertablecontent">
+                    <% users.forEach(function(user){ %>
+                    <tr>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.age %></td>
+                        <td><%= user.gender %></td>
+                        <td><%= user.occupation %></td>
+                        <td><%= user.city %></td>
+                        <td><%= user.salary %></td>
+                        <td><%= user.maritalStatus %></td>
+                        <td>
+                            <a href="edit/<%= user.id %>" class="btn btn-sm btn-primary">Edit</a>
+                            <a href="delete/<%= user.id %>" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

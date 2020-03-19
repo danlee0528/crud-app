@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    
+<body>
+    <div class="container">
+        <h2><%= title %></h2>
+        <form action="/update", method="post">
+            <div class="form-row">
+                <input type="hidden" value="<%= user.id %>" name="id">
+                <div class="form-group col-md-6">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="<%= user.name %>" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">E-mail</label>
+                    <input type="text" class="form-control" id="email" name="email" value="<%= user.email %>" placeholder="Enter your e-mail" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="age" name="age" value="<%= user.age %>" placeholder="Enter your age" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" name="city" value="<%= user.city %>" placeholder="Enter your city" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="occupation">Occupation</label>
+                    <input type="text" class="form-control" id="occupation" name="occupation" value="<%= user.occupation %>" placeholder="Enter your occupation" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="salary">Salary ($CAD)</label>
+                    <input type="number" class="form-control" id="salary" name="salary" value="<%= user.salary %>" placeholder="Enter your salary" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="gender">Gender</label>
+                    <select id="gender" class="form-control" name="gender" value="<%= user.gender %>">
+                        <option selected>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="maritalStatus">Marital Status</label>
+                    <select id="maritalStatus" class="form-control" name="maritalStatus" value="<%= user.maritalStatus %>">
+                        <option selected>Married</option>
+                        <option>Single</option>
+                        <option>Divorced</option>
+                        <option>Widowed</option>
+                        <option>Seperated</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
