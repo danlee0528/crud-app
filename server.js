@@ -5,7 +5,7 @@ const ejs = require("ejs");
 const mysql = require("mysql");
 const port = process.env.PORT || 8080;
 const db = mysql.createConnection({
-  host: "localhost",
+  host: "0.0.0.0",
   user: "root",
   password: "qwer1234",
   database: "cmpt470"
