@@ -1,9 +1,9 @@
 # Use the official lightweight Node.js 10 image.
 # https://hub.docker.com/_/node
-FROM node:10-slim
+FROM node:13.10.1-slim
 
 # Create and change to the app directory.
-WORKDIR /usr/src/app
+WORKDIR /usr/src/crud-app
 
 # Copy application dependency manifests to the container image.
 # A wildcard is used to ensure both package.json AND package-lock.json are copied.
