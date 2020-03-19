@@ -6,7 +6,7 @@ const mysql = require("mysql");
 const port = process.env.PORT || 8080;
 const db = mysql.createConnection({
   host: "34.69.252.141",
-  user: "test_remote",
+  user: "root",
   password: "qwer1234",
   database: "cmpt470",
   port: '3306'
