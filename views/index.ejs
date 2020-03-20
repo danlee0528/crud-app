@@ -20,32 +20,95 @@
             });
         });
     </script>
+    <script>
+        function sortTable(n) {
+            var table, rows, switching, i, x, y, k, shouldSwitch;
+            switching = true;
 
+            while (switching) {
+                table = document.getElementById("usertable");
+                switching = false;
+                rows = table.rows;
+
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("td")[n].innerHTML.toLowerCase();
+                    y = rows[i + 1].getElementsByTagName("td")[n].innerHTML.toLowerCase();
+
+                    // returns 0 if two strings are equal
+                    // returns -1 if str 1 is sorted before str2
+                    // return 1 if str1 is sorted after str2 
+                    k = x.localeCompare(y);
+
+                    if (k == -1) {
+                        shouldSwitch = false;
+                    } else if (k == 1) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+
+        function sortTableByNumber(n) {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("usertable");
+            switching = true;
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    // 3 is the age column
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    if (Number(x.innerHTML) > Number(y.innerHTML)) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+    </script>
+    <style>
+        th:hover {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
-<body>
-    <div class="container">
-        <h1><%= title %></h1>
-        <br />
-        <h4>Search:</h4>
-        <p>Type something in the input field to search the table for names, age, emails or anything!</p>
-        <input class="form-control" id="myInput" type="text" placeholder="Search..">
-        <br />
-        <a href="/adduser" class="btn btn-sm btn-primary">Add User</a>
-        <br />
-        <br />
+<body style="background-color:rgb(32, 32, 32)">
+    <div class="container" style="margin-top: 5%;">
+        <h1 style="text-align: center;color:white;"><%= title %></h1>
+        <br>
+        <h4 style="color:white; text-align: center;">Killer Search</h4>
+        <p style="color:white; text-align: center;">Type something in the input field to search the table for names, age, emails or anything!</p>
+        <input style="text-align: center;" class="form-control" id="myInput" type="text" placeholder="Search..">
+
+        <div style="padding: 2% 0 2% 0; text-align: center;">
+            <a href="/adduser" class="btn btn-sm btn-success">Sign New Contract</a>
+        </div>
         <div class="table-responsive">
             <table id="usertable" class="table table-dark table-stripped table-hover">
                 <tr>
-                    <th>Name</th>
-                    <th>E-mail</th>
-                    <th>Age</th>
-                    <th>Gender</th>
-                    <th>Occupation</th>
-                    <th>City</th>
-                    <th>Salary</th>
-                    <th>Marital Status</th>
-                    <th>Action</th>
+                    <th onclick="sortTable(0);">Name</th>
+                    <th onclick="sortTable(1);">E-mail</th>
+                    <th onclick="sortTableByNumber(2);">Age</th>
+                    <th onclick="sortTable(3);">Gender</th>
+                    <th onclick="sortTable(4);">Occupation</th>
+                    <th onclick="sortTable(5);">City</th>
+                    <th onclick="sortTableByNumber(6);">Salary</th>
+                    <th onclick="sortTableByNumber(6);">Marital Status</th>
+                    <th onclick="sortTable(7);">Action</th>
                 </tr>
                 <tbody id="usertablecontent">
                     <% users.forEach(function(user){ %>
@@ -60,7 +123,7 @@
                         <td><%= user.maritalStatus %></td>
                         <td>
                             <a href="edit/<%= user.id %>" class="btn btn-sm btn-primary">Edit</a>
-                            <a href="delete/<%= user.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="delete/<%= user.id %>" class="btn btn-sm btn-danger">Terminate</a>
                         </td>
                     </tr>
                     <% }); %>

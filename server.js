@@ -48,7 +48,7 @@ app.get("/", (req, res) => {
     let query = db.query(sql, (err, results) => {
         if (err) throw err;
         res.render("index", {
-            title: "CRUD Operation using NodeJS / ExpressJS / MySQL",
+            title: "Contract Dashboard",
              users: results
         });
     });
@@ -57,7 +57,7 @@ app.get("/", (req, res) => {
 // Show form
 app.get('/adduser', (req, res) => {
     res.render("add_user", {
-        title: "SURVEY FORM",
+        title: "New User Registration Form",
     });
 });
 
@@ -79,7 +79,7 @@ app.get('/edit/:userId', (req, res) => {
     let sql = `SELECT * FROM Users WHERE id = ${userId}`;
     let query = db.query(sql, (err, result) => {
       if (err) throw err;
-      console.log('User added...');
+      console.log('User retrieved...');
       res.render('edit_user', {
           title: 'EDIT USER',
           user: result[0]
@@ -94,7 +94,7 @@ app.post('/update', (req, res) => {
     let sql = `UPDATE Users SET ? WHERE id = ${userId}`;
     let query = db.query(sql, user, (err, result) => {
       if (err) throw err;
-      console.log('User added...');
+      console.log('User updated...');
       res.redirect('/');
     });
 });
@@ -105,7 +105,7 @@ app.get('/delete/:userId', (req, res) => {
     let sql = `DELETE FROM Users WHERE id = ${userId}`;
     let query = db.query(sql, (err, result) => {
       if (err) throw err;
-      console.log('User added...');
+      console.log('User deleted...');
       res.redirect('/');
     });
 });

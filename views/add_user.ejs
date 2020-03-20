@@ -7,61 +7,64 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     
-<body>
-    <div class="container">
-        <h2><%= title %></h2>
-        <form action="/save", method="post">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+<body style="background-color: rgb(32, 32, 32);">
+    <div class="container" style="margin-top: 5%;">
+        <h2 style="text-align: center;color:white;"><%= title %></h2>
+        <hr>
+        <div class="row-md-6" style="padding: 5%; border: 1px solid white;">
+            <form action="/save", method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label style="color:white;" for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label style="color:white;" for="email">E-mail</label>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter your e-mail" required>
+                    </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="email">E-mail</label>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter your e-mail" required>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label style="color:white;" for="age">Age</label>
+                        <input type="number" class="form-control" id="age" name="age" placeholder="Enter your age" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label style="color:white;" for="city">City</label>
+                        <input type="text" class="form-control" id="city" name="city" placeholder="Enter your city" required>
+                    </div>
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="age">Age</label>
-                    <input type="number" class="form-control" id="age" name="age" placeholder="Enter your age" required>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label style="color:white;" for="occupation">Occupation</label>
+                        <input type="text" class="form-control" id="occupation" name="occupation" placeholder="Enter your occupation" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label style="color:white;" for="salary">Salary ($CAD)</label>
+                        <input type="number" class="form-control" id="salary" name="salary" placeholder="Enter your salary" required>
+                    </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="city">City</label>
-                    <input type="text" class="form-control" id="city" name="city" placeholder="Enter your city" required>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label style="color:white;" for="gender">Gender</label>
+                        <select id="gender" class="form-control" name="gender">
+                            <option selected>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label style="color:white;" for="maritalStatus">Marital Status</label>
+                        <select id="maritalStatus" class="form-control" name="maritalStatus">
+                            <option selected>Married</option>
+                            <option>Single</option>
+                            <option>Divorced</option>
+                            <option>Widowed</option>
+                            <option>Seperated</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="occupation">Occupation</label>
-                    <input type="text" class="form-control" id="occupation" name="occupation" placeholder="Enter your occupation" required>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="salary">Salary ($CAD)</label>
-                    <input type="number" class="form-control" id="salary" name="salary" placeholder="Enter your salary" required>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="gender">Gender</label>
-                    <select id="gender" class="form-control" name="gender">
-                        <option selected>Male</option>
-                        <option>Female</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="maritalStatus">Marital Status</label>
-                    <select id="maritalStatus" class="form-control" name="maritalStatus">
-                        <option selected>Married</option>
-                        <option>Single</option>
-                        <option>Divorced</option>
-                        <option>Widowed</option>
-                        <option>Seperated</option>
-                    </select>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+                <button type="submit" class="btn btn-success" style="margin-top: 2%;">Submit</button>
+            </form>
+        </div>
     </div>
 </body>
 
